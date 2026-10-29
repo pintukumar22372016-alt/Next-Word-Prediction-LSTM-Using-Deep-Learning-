@@ -1,0 +1,1106 @@
+{
+  "model_architecture": "Embedding(128) -> LSTM(128) -> LSTM(128) -> Dense(128) -> Softmax",
+  "vocab_size": 1496,
+  "max_sequence_len": 12,
+  "train_metrics": {
+    "loss": 3.5197,
+    "val_loss": 8.6723,
+    "best_val_loss": 6.1563,
+    "accuracy": 0.3225,
+    "val_accuracy": 0.2815,
+    "best_val_accuracy": 0.2815
+  },
+  "test_metrics": {
+    "test_sequences": 549,
+    "test_loss": 6.1357,
+    "top_1_accuracy": 0.2641,
+    "top_5_accuracy": 0.3698
+  },
+  "benchmark_prompts": {
+    "hello how are": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "you",
+          "probability": 0.312,
+          "percentage": 31.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 42.2
+        },
+        {
+          "word": "a",
+          "probability": 0.2668,
+          "percentage": 26.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 36.1
+        },
+        {
+          "word": "going",
+          "probability": 0.0774,
+          "percentage": 7.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 10.5
+        },
+        {
+          "word": "are",
+          "probability": 0.042,
+          "percentage": 4.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 5.7
+        },
+        {
+          "word": "is",
+          "probability": 0.0406,
+          "percentage": 4.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 5.5
+        }
+      ]
+    },
+    "how are you": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "please",
+          "probability": 0.0613,
+          "percentage": 6.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 41.6
+        },
+        {
+          "word": "working",
+          "probability": 0.0235,
+          "percentage": 2.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.9
+        },
+        {
+          "word": "student",
+          "probability": 0.0235,
+          "percentage": 2.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.9
+        },
+        {
+          "word": "the",
+          "probability": 0.0197,
+          "percentage": 2.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.4
+        },
+        {
+          "word": "studying",
+          "probability": 0.0195,
+          "percentage": 2.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.2
+        }
+      ]
+    },
+    "could you please": {
+      "source": "fallback",
+      "source_label": "Statistical N-Gram Language Model",
+      "top_candidates": [
+        {
+          "word": "help",
+          "probability": null,
+          "score": 0.2,
+          "percentage": 20.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('could', 'you', 'please')",
+          "relative_share": 20.0
+        },
+        {
+          "word": "explain",
+          "probability": null,
+          "score": 0.2,
+          "percentage": 20.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('could', 'you', 'please')",
+          "relative_share": 20.0
+        },
+        {
+          "word": "pass",
+          "probability": null,
+          "score": 0.2,
+          "percentage": 20.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('could', 'you', 'please')",
+          "relative_share": 20.0
+        },
+        {
+          "word": "send",
+          "probability": null,
+          "score": 0.2,
+          "percentage": 20.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('could', 'you', 'please')",
+          "relative_share": 20.0
+        },
+        {
+          "word": "clarify",
+          "probability": null,
+          "score": 0.2,
+          "percentage": 20.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('could', 'you', 'please')",
+          "relative_share": 20.0
+        }
+      ]
+    },
+    "it is always a": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "software",
+          "probability": 0.0612,
+          "percentage": 6.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 26.0
+        },
+        {
+          "word": "student",
+          "probability": 0.0477,
+          "percentage": 4.8,
+          "score_type": "softmax_confidence",
+          "relative_share": 20.3
+        },
+        {
+          "word": "time",
+          "probability": 0.0472,
+          "percentage": 4.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 20.1
+        },
+        {
+          "word": "popular",
+          "probability": 0.0436,
+          "percentage": 4.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 18.5
+        },
+        {
+          "word": "let",
+          "probability": 0.0357,
+          "percentage": 3.6,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.2
+        }
+      ]
+    },
+    "thank you for": {
+      "source": "fallback",
+      "source_label": "Statistical N-Gram Language Model",
+      "top_candidates": [
+        {
+          "word": "joining",
+          "probability": null,
+          "score": 0.25,
+          "percentage": 25.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('thank', 'you', 'for')",
+          "relative_share": 22.7
+        },
+        {
+          "word": "your",
+          "probability": null,
+          "score": 0.25,
+          "percentage": 25.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('thank', 'you', 'for')",
+          "relative_share": 22.7
+        },
+        {
+          "word": "taking",
+          "probability": null,
+          "score": 0.25,
+          "percentage": 25.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('thank', 'you', 'for')",
+          "relative_share": 22.7
+        },
+        {
+          "word": "sharing",
+          "probability": null,
+          "score": 0.25,
+          "percentage": 25.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('thank', 'you', 'for')",
+          "relative_share": 22.7
+        },
+        {
+          "word": "data",
+          "probability": null,
+          "score": 0.1011,
+          "percentage": 10.1,
+          "score_type": "bigram_frequency",
+          "context_used": "bigram: ('for')",
+          "relative_share": 9.2
+        }
+      ]
+    },
+    "let us work": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "together",
+          "probability": 0.1255,
+          "percentage": 12.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 36.6
+        },
+        {
+          "word": "breath",
+          "probability": 0.0699,
+          "percentage": 7.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 20.4
+        },
+        {
+          "word": "regularly",
+          "probability": 0.0539,
+          "percentage": 5.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.7
+        },
+        {
+          "word": "there",
+          "probability": 0.0466,
+          "percentage": 4.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.6
+        },
+        {
+          "word": "storytelling",
+          "probability": 0.0466,
+          "percentage": 4.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.6
+        }
+      ]
+    },
+    "i am going to": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "learn",
+          "probability": 0.2713,
+          "percentage": 27.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 48.6
+        },
+        {
+          "word": "the",
+          "probability": 0.0907,
+          "percentage": 9.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 16.2
+        },
+        {
+          "word": "attend",
+          "probability": 0.071,
+          "percentage": 7.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 12.7
+        },
+        {
+          "word": "start",
+          "probability": 0.0654,
+          "percentage": 6.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 11.7
+        },
+        {
+          "word": "visit",
+          "probability": 0.0602,
+          "percentage": 6.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 10.8
+        }
+      ]
+    },
+    "python is a": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "student",
+          "probability": 0.0726,
+          "percentage": 7.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 23.4
+        },
+        {
+          "word": "popular",
+          "probability": 0.0704,
+          "percentage": 7.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 22.7
+        },
+        {
+          "word": "versatile",
+          "probability": 0.0673,
+          "percentage": 6.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 21.7
+        },
+        {
+          "word": "software",
+          "probability": 0.0623,
+          "percentage": 6.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 20.1
+        },
+        {
+          "word": "web",
+          "probability": 0.0372,
+          "percentage": 3.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 12.0
+        }
+      ]
+    },
+    "machine learning is": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "transforming",
+          "probability": 0.0636,
+          "percentage": 6.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 35.4
+        },
+        {
+          "word": "the",
+          "probability": 0.0375,
+          "percentage": 3.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 20.9
+        },
+        {
+          "word": "time",
+          "probability": 0.0286,
+          "percentage": 2.9,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.9
+        },
+        {
+          "word": "essential",
+          "probability": 0.025,
+          "percentage": 2.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.9
+        },
+        {
+          "word": "your",
+          "probability": 0.0248,
+          "percentage": 2.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.8
+        }
+      ]
+    },
+    "deep neural networks": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "going",
+          "probability": 0.1014,
+          "percentage": 10.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 24.9
+        },
+        {
+          "word": "you",
+          "probability": 0.0941,
+          "percentage": 9.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 23.1
+        },
+        {
+          "word": "are",
+          "probability": 0.0895,
+          "percentage": 9.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 22.0
+        },
+        {
+          "word": "a",
+          "probability": 0.0788,
+          "percentage": 7.9,
+          "score_type": "softmax_confidence",
+          "relative_share": 19.4
+        },
+        {
+          "word": "have",
+          "probability": 0.0431,
+          "percentage": 4.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 10.6
+        }
+      ]
+    },
+    "software engineers write": {
+      "source": "fallback",
+      "source_label": "Statistical N-Gram Language Model",
+      "top_candidates": [
+        {
+          "word": "clean",
+          "probability": null,
+          "score": 0.5,
+          "percentage": 50.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('software', 'engineers', 'write')",
+          "relative_share": 33.3
+        },
+        {
+          "word": "modular",
+          "probability": null,
+          "score": 0.5,
+          "percentage": 50.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('software', 'engineers', 'write')",
+          "relative_share": 33.3
+        },
+        {
+          "word": "better",
+          "probability": null,
+          "score": 0.1667,
+          "percentage": 16.7,
+          "score_type": "bigram_frequency",
+          "context_used": "bigram: ('write')",
+          "relative_share": 11.1
+        },
+        {
+          "word": "comprehensive",
+          "probability": null,
+          "score": 0.1667,
+          "percentage": 16.7,
+          "score_type": "bigram_frequency",
+          "context_used": "bigram: ('write')",
+          "relative_share": 11.1
+        },
+        {
+          "word": "and",
+          "probability": null,
+          "score": 0.1667,
+          "percentage": 16.7,
+          "score_type": "bigram_frequency",
+          "context_used": "bigram: ('write')",
+          "relative_share": 11.1
+        }
+      ]
+    },
+    "the future of": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "france",
+          "probability": 0.0679,
+          "percentage": 6.8,
+          "score_type": "softmax_confidence",
+          "relative_share": 31.1
+        },
+        {
+          "word": "artificial",
+          "probability": 0.0488,
+          "percentage": 4.9,
+          "score_type": "softmax_confidence",
+          "relative_share": 22.4
+        },
+        {
+          "word": "education",
+          "probability": 0.0471,
+          "percentage": 4.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 21.6
+        },
+        {
+          "word": "algorithms",
+          "probability": 0.0274,
+          "percentage": 2.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 12.6
+        },
+        {
+          "word": "black",
+          "probability": 0.027,
+          "percentage": 2.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 12.4
+        }
+      ]
+    },
+    "the future of technology": {
+      "source": "fallback",
+      "source_label": "Statistical N-Gram Language Model",
+      "top_candidates": [
+        {
+          "word": "lies",
+          "probability": null,
+          "score": 0.5,
+          "percentage": 50.0,
+          "score_type": "5gram_frequency",
+          "context_used": "5gram: ('the', 'future', 'of', 'technology')",
+          "relative_share": 28.0
+        },
+        {
+          "word": "depends",
+          "probability": null,
+          "score": 0.5,
+          "percentage": 50.0,
+          "score_type": "5gram_frequency",
+          "context_used": "5gram: ('the', 'future', 'of', 'technology')",
+          "relative_share": 28.0
+        },
+        {
+          "word": "and",
+          "probability": null,
+          "score": 0.3333,
+          "percentage": 33.3,
+          "score_type": "trigram_frequency",
+          "context_used": "trigram: ('of', 'technology')",
+          "relative_share": 18.6
+        },
+        {
+          "word": "conference",
+          "probability": null,
+          "score": 0.3636,
+          "percentage": 36.4,
+          "score_type": "bigram_frequency",
+          "context_used": "bigram: ('technology')",
+          "relative_share": 20.3
+        },
+        {
+          "word": "company",
+          "probability": null,
+          "score": 0.0909,
+          "percentage": 9.1,
+          "score_type": "bigram_frequency",
+          "context_used": "bigram: ('technology')",
+          "relative_share": 5.1
+        }
+      ]
+    },
+    "i want to learn": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "developer",
+          "probability": 0.085,
+          "percentage": 8.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 30.4
+        },
+        {
+          "word": "more",
+          "probability": 0.0847,
+          "percentage": 8.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 30.3
+        },
+        {
+          "word": "working",
+          "probability": 0.0426,
+          "percentage": 4.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.2
+        },
+        {
+          "word": "you",
+          "probability": 0.0343,
+          "percentage": 3.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 12.3
+        },
+        {
+          "word": "my",
+          "probability": 0.0328,
+          "percentage": 3.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 11.7
+        }
+      ]
+    },
+    "reading books regularly": {
+      "source": "fallback",
+      "source_label": "Statistical N-Gram Language Model",
+      "top_candidates": [
+        {
+          "word": "expands",
+          "probability": null,
+          "score": 1.0,
+          "percentage": 100.0,
+          "score_type": "4gram_frequency",
+          "context_used": "4gram: ('reading', 'books', 'regularly')",
+          "relative_share": 86.7
+        },
+        {
+          "word": "the",
+          "probability": null,
+          "score": 0.0489,
+          "percentage": 4.9,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 4.2
+        },
+        {
+          "word": "to",
+          "probability": null,
+          "score": 0.0353,
+          "percentage": 3.5,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 3.1
+        },
+        {
+          "word": "a",
+          "probability": null,
+          "score": 0.0349,
+          "percentage": 3.5,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 3.0
+        },
+        {
+          "word": "is",
+          "probability": null,
+          "score": 0.0343,
+          "percentage": 3.4,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 3.0
+        }
+      ]
+    },
+    "the university provides": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "with",
+          "probability": 0.1008,
+          "percentage": 10.1,
+          "score_type": "softmax_confidence",
+          "relative_share": 32.9
+        },
+        {
+          "word": "intelligence",
+          "probability": 0.0571,
+          "percentage": 5.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 18.6
+        },
+        {
+          "word": "systems",
+          "probability": 0.0531,
+          "percentage": 5.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 17.3
+        },
+        {
+          "word": "as",
+          "probability": 0.0518,
+          "percentage": 5.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 16.9
+        },
+        {
+          "word": "who",
+          "probability": 0.0436,
+          "percentage": 4.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 14.2
+        }
+      ]
+    },
+    "in order to succeed you": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "take",
+          "probability": 0.0269,
+          "percentage": 2.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 27.3
+        },
+        {
+          "word": "comfortable",
+          "probability": 0.0229,
+          "percentage": 2.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 23.2
+        },
+        {
+          "word": "about",
+          "probability": 0.0192,
+          "percentage": 1.9,
+          "score_type": "softmax_confidence",
+          "relative_share": 19.5
+        },
+        {
+          "word": "country",
+          "probability": 0.0171,
+          "percentage": 1.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 17.3
+        },
+        {
+          "word": "technology",
+          "probability": 0.0126,
+          "percentage": 1.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 12.8
+        }
+      ]
+    },
+    "the sun rises in the": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "east",
+          "probability": 0.422,
+          "percentage": 42.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 73.0
+        },
+        {
+          "word": "experience",
+          "probability": 0.0579,
+          "percentage": 5.8,
+          "score_type": "softmax_confidence",
+          "relative_share": 10.0
+        },
+        {
+          "word": "data",
+          "probability": 0.0356,
+          "percentage": 3.6,
+          "score_type": "softmax_confidence",
+          "relative_share": 6.2
+        },
+        {
+          "word": "science",
+          "probability": 0.0333,
+          "percentage": 3.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 5.8
+        },
+        {
+          "word": "west",
+          "probability": 0.029,
+          "percentage": 2.9,
+          "score_type": "softmax_confidence",
+          "relative_share": 5.0
+        }
+      ]
+    },
+    "the weather is": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "cold",
+          "probability": 0.1154,
+          "percentage": 11.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 34.8
+        },
+        {
+          "word": "sunny",
+          "probability": 0.0616,
+          "percentage": 6.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 18.6
+        },
+        {
+          "word": "mild",
+          "probability": 0.0547,
+          "percentage": 5.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 16.5
+        },
+        {
+          "word": "upon",
+          "probability": 0.053,
+          "percentage": 5.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 16.0
+        },
+        {
+          "word": "beautiful",
+          "probability": 0.047,
+          "percentage": 4.7,
+          "score_type": "softmax_confidence",
+          "relative_share": 14.2
+        }
+      ]
+    },
+    "once upon a": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "software",
+          "probability": 0.085,
+          "percentage": 8.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 25.9
+        },
+        {
+          "word": "student",
+          "probability": 0.0796,
+          "percentage": 8.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 24.2
+        },
+        {
+          "word": "popular",
+          "probability": 0.0623,
+          "percentage": 6.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 19.0
+        },
+        {
+          "word": "time",
+          "probability": 0.0553,
+          "percentage": 5.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 16.8
+        },
+        {
+          "word": "versatile",
+          "probability": 0.0464,
+          "percentage": 4.6,
+          "score_type": "softmax_confidence",
+          "relative_share": 14.1
+        }
+      ]
+    },
+    "roses are red and": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "violets",
+          "probability": 0.1345,
+          "percentage": 13.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 35.0
+        },
+        {
+          "word": "comfortable",
+          "probability": 0.1337,
+          "percentage": 13.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 34.8
+        },
+        {
+          "word": "country",
+          "probability": 0.0616,
+          "percentage": 6.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 16.0
+        },
+        {
+          "word": "take",
+          "probability": 0.0284,
+          "percentage": 2.8,
+          "score_type": "softmax_confidence",
+          "relative_share": 7.4
+        },
+        {
+          "word": "the",
+          "probability": 0.0259,
+          "percentage": 2.6,
+          "score_type": "softmax_confidence",
+          "relative_share": 6.7
+        }
+      ]
+    },
+    "the capital of france is": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "paris",
+          "probability": 0.7722,
+          "percentage": 77.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 91.2
+        },
+        {
+          "word": "algorithms",
+          "probability": 0.0257,
+          "percentage": 2.6,
+          "score_type": "softmax_confidence",
+          "relative_share": 3.0
+        },
+        {
+          "word": "computing",
+          "probability": 0.0244,
+          "percentage": 2.4,
+          "score_type": "softmax_confidence",
+          "relative_share": 2.9
+        },
+        {
+          "word": "processing",
+          "probability": 0.0131,
+          "percentage": 1.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 1.5
+        },
+        {
+          "word": "you",
+          "probability": 0.0117,
+          "percentage": 1.2,
+          "score_type": "softmax_confidence",
+          "relative_share": 1.4
+        }
+      ]
+    },
+    "one of the": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "best",
+          "probability": 0.2432,
+          "percentage": 24.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 43.4
+        },
+        {
+          "word": "most",
+          "probability": 0.1552,
+          "percentage": 15.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 27.7
+        },
+        {
+          "word": "greatest",
+          "probability": 0.0851,
+          "percentage": 8.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 15.2
+        },
+        {
+          "word": "key",
+          "probability": 0.0433,
+          "percentage": 4.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 7.7
+        },
+        {
+          "word": "main",
+          "probability": 0.0334,
+          "percentage": 3.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 6.0
+        }
+      ]
+    },
+    "astronomers observed an unfamiliar distant celestial galaxy": {
+      "source": "lstm",
+      "source_label": "LSTM Neural Network",
+      "top_candidates": [
+        {
+          "word": "day",
+          "probability": 0.0548,
+          "percentage": 5.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 31.7
+        },
+        {
+          "word": "applications",
+          "probability": 0.039,
+          "percentage": 3.9,
+          "score_type": "softmax_confidence",
+          "relative_share": 22.6
+        },
+        {
+          "word": "morning",
+          "probability": 0.0353,
+          "percentage": 3.5,
+          "score_type": "softmax_confidence",
+          "relative_share": 20.4
+        },
+        {
+          "word": "work",
+          "probability": 0.0234,
+          "percentage": 2.3,
+          "score_type": "softmax_confidence",
+          "relative_share": 13.5
+        },
+        {
+          "word": "science",
+          "probability": 0.0203,
+          "percentage": 2.0,
+          "score_type": "softmax_confidence",
+          "relative_share": 11.7
+        }
+      ]
+    },
+    "quantum cryptography utilizes photonic entanglement": {
+      "source": "fallback",
+      "source_label": "Statistical N-Gram Language Model",
+      "top_candidates": [
+        {
+          "word": "the",
+          "probability": null,
+          "score": 0.0489,
+          "percentage": 4.9,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 27.1
+        },
+        {
+          "word": "to",
+          "probability": null,
+          "score": 0.0353,
+          "percentage": 3.5,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 19.6
+        },
+        {
+          "word": "a",
+          "probability": null,
+          "score": 0.0349,
+          "percentage": 3.5,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 19.3
+        },
+        {
+          "word": "is",
+          "probability": null,
+          "score": 0.0343,
+          "percentage": 3.4,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 19.0
+        },
+        {
+          "word": "and",
+          "probability": null,
+          "score": 0.027,
+          "percentage": 2.7,
+          "score_type": "unigram_frequency",
+          "context_used": "unigram_corpus_frequency",
+          "relative_share": 15.0
+        }
+      ]
+    }
+  }
+}

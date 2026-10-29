@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time Deep Learning Next Word Prediction and Text Generation powered by Bidirectional LSTM neural networks.">
+    <title>NeuroText | Next Word Prediction & Text Completion (LSTM)</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div class="app-container">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="brand-title">NeuroText</span>
+                    <span class="brand-badge">LSTM DL</span>
+                </div>
+            </div>
+
+            <div class="nav-status">
+                <div id="status-indicator" class="status-pill status-loading">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Connecting to Model...</span>
+                </div>
+                <button id="btn-toggle-info" class="btn-icon" title="Architecture Details">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Hero -->
+        <main class="main-layout">
+            <section class="hero-section">
+                <div class="badge-pill">Deep Learning NLP Engine</div>
+                <h1 class="main-heading">Next Word Prediction <span class="gradient-text">with Bidirectional LSTM</span></h1>
+                <p class="sub-heading">
+                    Type a phrase to see real-time sequential probabilities computed by recurrent neural memory, or let the LSTM model generate creative sentence continuations.
+                </p>
+            </section>
+
+            <!-- Interactive Workspace Grid -->
+            <div class="workspace-grid">
+                <!-- Left Column: Input Playground & Generation -->
+                <div class="column-left">
+                    <div class="glass-card input-card">
+                        <div class="card-header">
+                            <span class="card-label">Interactive Prompt Input</span>
+                            <div class="card-actions">
+                                <button id="btn-clear-text" class="btn-secondary-sm" title="Clear Text">Clear</button>
+                            </div>
+                        </div>
+
+                        <!-- Typing Area with Ghost Autocomplete -->
+                        <div class="editor-container">
+                            <textarea 
+                                id="input-prompt" 
+                                placeholder="Type something here (e.g., 'to be or not', 'neither a borrower')..." 
+                                rows="3"
+                                spellcheck="false"
+                            ></textarea>
+                            <div id="ghost-preview" class="ghost-preview" aria-hidden="true"></div>
+                        </div>
+
+                        <!-- Quick Seed Prompts -->
+                        <div class="prompt-chips-container">
+                            <span class="chips-label">Try test seeds:</span>
+                            <div id="prompt-chips" class="prompt-chips">
+                                <button class="chip-btn" data-seed="i am a">"i am a"</button>
+                                <button class="chip-btn" data-seed="i am going to">"i am going to"</button>
+                                <button class="chip-btn" data-seed="machine learning">"machine learning"</button>
+                                <button class="chip-btn" data-seed="hello">"hello"</button>
+                                <button class="chip-btn" data-seed="today">"today"</button>
+                                <button class="chip-btn" data-seed="python is">"python is"</button>
+                                <button class="chip-btn" data-seed="the future of">"the future of"</button>
+                                <button class="chip-btn" data-seed="the sun rises in the">"the sun rises in the"</button>
+                            </div>
+                        </div>
+
+                        <!-- Optional Spelling Correction Banner -->
+                        <div id="spelling-banner" class="spelling-banner hidden">
+                            <span class="spelling-icon">💡</span>
+                            <span>Suggestions include correction for: <strong id="spelling-text"></strong></span>
+                        </div>
+
+                        <!-- Top Autocomplete Candidates Bar -->
+                        <div class="autocomplete-bar">
+                            <span class="autocomplete-label">Press TAB or click to complete:</span>
+                            <div id="quick-word-chips" class="quick-word-chips">
+                                <span class="empty-hint">Start typing above to trigger real-time predictions...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Word Text Generation Panel -->
+                    <div class="glass-card generation-card">
+                        <div class="card-header">
+                            <div>
+                                <span class="card-label">Auto-Generate Continuation</span>
+                                <p class="card-caption">Iterative recurrent roll-out with temperature sampling</p>
+                            </div>
+                            <button id="btn-generate-stream" class="btn-primary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                <span>Generate More Words</span>
+                            </button>
+                        </div>
+
+                        <!-- Controls: Length and Temperature -->
+                        <div class="generation-controls">
+                            <div class="control-group">
+                                <div class="control-header">
+                                    <label for="slider-words">Tokens to generate:</label>
+                                    <span id="label-num-words" class="control-val">8 words</span>
+                                </div>
+                                <input type="range" id="slider-words" min="3" max="25" value="8" step="1">
+                            </div>
+
+                            <div class="control-group">
+                                <div class="control-header">
+                                    <label for="slider-temp">Creativity (Temperature):</label>
+                                    <span id="label-temperature" class="control-val">0.7</span>
+                                </div>
+                                <input type="range" id="slider-temp" min="0.1" max="1.4" value="0.7" step="0.1">
+                            </div>
+                        </div>
+
+                        <!-- Generation Result Box -->
+                        <div id="generation-output-box" class="generation-output-box hidden">
+                            <div class="output-header">
+                                <span class="output-title">Model Output:</span>
+                                <button id="btn-copy-output" class="btn-secondary-sm" title="Copy to clipboard">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+                            <div id="generation-text" class="generation-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Probability Distribution & Architecture -->
+                <div class="column-right">
+                    <!-- Probability Distribution Card -->
+                    <div class="glass-card probabilities-card">
+                        <div class="card-header">
+                            <div>
+                                <span class="card-label">Top Predicted Candidates</span>
+                                <p id="prediction-source-desc" class="card-caption">Genuine Model Probabilities</p>
+                            </div>
+                            <div class="header-badges">
+                                <span id="source-badge" class="source-pill source-lstm">⚡ LSTM Model</span>
+                                <span id="inference-time-badge" class="stat-badge">⚡ Real-time</span>
+                            </div>
+                        </div>
+
+                        <div id="predictions-list" class="predictions-list">
+                            <div class="placeholder-state">
+                                <div class="placeholder-icon">🔮</div>
+                                <p>Awaiting input...</p>
+                                <span>Type text in the input box to visualize next-word predictions.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Model Specifications Card -->
+                    <div class="glass-card model-specs-card">
+                        <div class="card-header">
+                            <span class="card-label">Neural Network Specs</span>
+                            <span class="chip-status">Keras 3 + BiLSTM</span>
+                        </div>
+
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Architecture</span>
+                                <span id="spec-arch" class="spec-value">BiLSTM + LSTM</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Vocabulary Size</span>
+                                <span id="spec-vocab" class="spec-value">Calculating...</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Test Top-1 Accuracy</span>
+                                <span id="spec-top1" class="spec-value">Evaluating...</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Test Top-5 Accuracy</span>
+                                <span id="spec-top5" class="spec-value">Evaluating...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Next Word Prediction Deep Learning Project &bull; Built with TensorFlow, Keras, Flask & Vanilla Modern CSS</p>
+        </footer>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="info-modal" class="modal-backdrop hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>About This Deep Learning Architecture</h3>
+                <button id="btn-close-modal" class="btn-icon">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This project implements sequential token modeling using a multi-layer Bidirectional LSTM network.</p>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-num">1</div>
+                        <div class="step-desc">
+                            <strong>Text Preprocessing & Tokenization:</strong> The text corpus is lowercased, punctuation stripped, and mapped to integer sequences via Keras Tokenizer.
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">2</div>
+                        <div class="step-desc">
+                            <strong>N-gram Sequences:</strong> Sliding context windows produce prefix sequences <code>[w1, w2, ..., wt]</code> targeting next word <code>wt+1</code>.
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">3</div>
+                        <div class="step-desc">
+                            <strong>Embedding & BiLSTM:</strong> An Embedding layer maps tokens to continuous vectors, forwarded through a Bidirectional LSTM and a forward LSTM layer with dropout regularization.
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">4</div>
+                        <div class="step-desc">
+                            <strong>Dense Softmax Output:</strong> Computes the normalized probability distribution over all vocabulary items for real-time word suggestion.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

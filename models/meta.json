@@ -1,0 +1,27 @@
+{
+  "max_sequence_len": 12,
+  "total_words": 1496,
+  "architecture": "Embedding(128) -> LSTM(128) -> LSTM(128) -> Dense(128) -> Softmax",
+  "final_train_loss": 3.5197,
+  "final_val_loss": 8.6723,
+  "best_val_loss": 6.1563,
+  "final_train_accuracy": 0.3225,
+  "final_val_accuracy": 0.2815,
+  "best_val_accuracy": 0.2815,
+  "sample_prompts": [
+    "hello how are",
+    "the sun rises in the",
+    "i am a",
+    "i am going to",
+    "machine learning is",
+    "i want to learn",
+    "the capital of france is",
+    "once upon a",
+    "roses are red and",
+    "how are you",
+    "the weather is",
+    "python is a",
+    "the future of technology",
+    "one of the"
+  ]
+}

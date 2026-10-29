@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Model weights and artifacts
+*.h5
+*.keras
+*.tflite
+*.pickle
+*.pkl
+
+# VS Code / IDE
+.vscode/
+.idea/
+*.swp
